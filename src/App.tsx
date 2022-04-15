@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import Accordion from './components/Accordion/Accordion';
+import Accordion, {ItemsType} from './components/Accordion/Accordion';
 import {Rating, RatingValueType} from './components/Rating/Rating';
 // @ts-ignore
 import OnOff from './components/OnOff/OnOff';
@@ -21,12 +21,22 @@ function App() {
     let [ratingValue, setRatingValue] = useState<RatingValueType>(0)
     let [collapsedValue, setCollapsedValue] = useState<boolean>(false)
 
+    const onClickBody = (value:number) => {
+      alert(`Be happy ${value}!`)
+    }
+
+    const items:ItemsType[] = [];
+
     return (
         <div>
             <UncontrolledAccordion titleValue={'Menu'}/>
             <UncontrolledAccordion titleValue={'Users'}/>
 
-            <Accordion titleValue={'Menu'} collapsed={collapsedValue} onClick = {()=>setCollapsedValue(!collapsedValue)}/>
+            <Accordion titleValue={'Menu'}
+                       collapsed={collapsedValue}
+                       onClick = {()=>setCollapsedValue(!collapsedValue)}
+                           onClickBody={onClickBody}
+                           items={items}/>
             {/*<Accordion titleValue={'Menu'} collapsed={collapsedValue} onClick = {setCollapsedValue}/> второй способ со значением*/}
             <Rating value={ratingValue} setRatingValue={setRatingValue}/>
 

@@ -3,7 +3,7 @@ import {action} from '@storybook/addon-actions';
 import UncontrolledOnOff, { UncontrolledOnOffType } from './UncontrolledOnOff';
 import {Story} from '@storybook/react';
 
-export type categoryNameType= 'Events'| 'Values'| 'InputValue'
+export type categoryNameType= 'Events'| 'Values'
 const CategoryObj = (categoryName:categoryNameType) => ({
     table: {
         category: categoryName
@@ -19,10 +19,7 @@ export default {
         },
         defaultOn:{
             ...CategoryObj('Values')
-        },
-        value:{
-            ...CategoryObj('InputValue')
-        },
+        }
     }
 }
 
@@ -40,16 +37,6 @@ export const OffMode = Template.bind({})
 OffMode.args = {
     defaultOn:false,
     onChange:callback
-}
-
-export type InputType = {
-    value: string
-}
-const DefaultTemplate: Story<InputType> = (args)=> <input readOnly {...args}/>
-
-export const DefaultInputValue = DefaultTemplate.bind({})
-DefaultInputValue.args = {
-    value: 'yo'
 }
 
 // export const OnMode = ()=> (<UncontrolledOnOff defaultOn={true} onChange={callback} />)
