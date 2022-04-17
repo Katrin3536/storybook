@@ -1,5 +1,5 @@
 import React from 'react';
-import UncontrolledAccordion, { UncontrolledAccordionPropsType } from './UncontrolledAccordion';
+import UncontrolledAccordionMemo, { UncontrolledAccordionPropsType } from './UncontrolledAccordion';
 import {Story} from '@storybook/react';
 
 const CategoryObj = (categoryName: 'Values') => ({
@@ -10,7 +10,7 @@ const CategoryObj = (categoryName: 'Values') => ({
 
 export default {
     title: 'components/UncontrolledAccordion',
-    component: UncontrolledAccordion,
+    component: UncontrolledAccordionMemo,
     argTypes: {
         titleValue: {
             ...CategoryObj('Values'),
@@ -18,7 +18,7 @@ export default {
     }
 }
 
-const Template: Story<UncontrolledAccordionPropsType> = (args) => <UncontrolledAccordion {...args}/>;
+const Template: Story<UncontrolledAccordionPropsType> = (args) => <UncontrolledAccordionMemo {...args}/>;
 
 export const ModeChanging = Template.bind({});
 ModeChanging.args = {

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {action} from '@storybook/addon-actions';
-import Accordion, {AccordionPropsType} from './Accordion';
+import AccordionMemo, {AccordionPropsType} from './Accordion';
 import {Story} from '@storybook/react';
 
 
@@ -13,7 +13,7 @@ const CategoryObj = (categoryName:categoryNameType) => ({
 
 export default {
     title: 'components/Accordion',
-    component: Accordion,
+    component: AccordionMemo,
     argTypes: {
         color: {
             control: 'color',
@@ -37,7 +37,7 @@ export default {
     }
 };
 
-const Template: Story<AccordionPropsType> = (args) => <Accordion {...args}/>;
+const Template: Story<AccordionPropsType> = (args) => <AccordionMemo {...args}/>;
 
 const callback = action('accordion mode change fired');
 const callbackItem = action('some item was clicked');
@@ -62,7 +62,7 @@ UncollapsedMode.args = {
 
 export const ModeChanging: Story<AccordionPropsType> = (args) => {
     const [value, setValue] = useState<boolean>(true);
-    return <Accordion {...args} onClick={() => setValue(!value)} collapsed={value}/>;
+    return <AccordionMemo {...args} onClick={() => setValue(!value)} collapsed={value}/>;
 };
 ModeChanging.args = {
     titleValue: 'Users',

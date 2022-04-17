@@ -1,6 +1,6 @@
 import React from 'react';
 import {action} from '@storybook/addon-actions';
-import UncontrolledOnOff, { UncontrolledOnOffType } from './UncontrolledOnOff';
+import UncontrolledOnOffMemo, { UncontrolledOnOffType } from './UncontrolledOnOff';
 import {Story} from '@storybook/react';
 
 export type categoryNameType= 'Events'| 'Values'
@@ -12,7 +12,7 @@ const CategoryObj = (categoryName:categoryNameType) => ({
 
 export default {
     title: 'components/UncontrolledOnOff',
-    component: UncontrolledOnOff,
+    component: UncontrolledOnOffMemo,
     argTypes: {
         onChange: {
             ...CategoryObj('Events')
@@ -25,7 +25,7 @@ export default {
 
 const callback = action("on or off clicked")
 
-const Template: Story<UncontrolledOnOffType> = (args)=> <UncontrolledOnOff {...args}/>
+const Template: Story<UncontrolledOnOffType> = (args)=> <UncontrolledOnOffMemo {...args}/>
 
 export const OnMode = Template.bind({})
  OnMode.args = {

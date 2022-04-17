@@ -5,7 +5,7 @@ export type UncontrolledOnOffType ={
     defaultOn?: boolean,
 }
 
-const UncontrolledOnOff = (props: UncontrolledOnOffType):JSX.Element => {
+const UncontrolledOnOffMemo = (props: UncontrolledOnOffType):JSX.Element => {
 
     let [value, setValue] = useState<boolean>(props.defaultOn?props.defaultOn: false);
 
@@ -39,5 +39,6 @@ const UncontrolledOnOff = (props: UncontrolledOnOffType):JSX.Element => {
 
 
 };
+export const UncontrolledOnOff = React.memo(UncontrolledOnOffMemo)
 
-export default UncontrolledOnOff;
+export default UncontrolledOnOffMemo;

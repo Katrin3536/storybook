@@ -1,6 +1,6 @@
 import React from 'react';
 
-type OnOff = {
+export type OnOff = {
     turnOn: boolean,
     /**
      * Function that change "ON" and "OFF"
@@ -8,7 +8,9 @@ type OnOff = {
      */
     onClick: (nameButton: string) => void
 }
-const OnOff = (props: OnOff) => {
+export const OnOff = React.memo(OnOffMemo)
+
+export function OnOffMemo (props: OnOff) {
     const styleButtonOn = {backgroundColor: props.turnOn ? 'green' : ''};
     const styleButtonOff = {backgroundColor: props.turnOn ? '' : 'red'};
     const roundButton = {
@@ -24,4 +26,4 @@ const OnOff = (props: OnOff) => {
     );
 };
 
-export default OnOff;
+export default OnOffMemo;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {RatingPropsType, UncontrolledRating} from './UncontrolledRating';
+import {RatingPropsType, UncontrolledRatingMemo} from './UncontrolledRating';
 import {Story} from '@storybook/react';
 
 const CategoryObj = (categoryName: 'Values') => ({
@@ -10,7 +10,7 @@ const CategoryObj = (categoryName: 'Values') => ({
 
 export default {
     title: 'components/UncontrolledRating',
-    component: UncontrolledRating,
+    component: UncontrolledRatingMemo,
     argTypes: {
         defaultValue: {
             ...CategoryObj('Values'),
@@ -18,7 +18,7 @@ export default {
     }
 };
 
-const Template: Story<RatingPropsType> = (args) => <UncontrolledRating {...args}/>;
+const Template: Story<RatingPropsType> = (args) => <UncontrolledRatingMemo {...args}/>;
 
 export const EmptyRating = Template.bind({});
 EmptyRating.args = {

@@ -3,7 +3,7 @@ import './App.css';
 import Accordion, {ItemsType} from './components/Accordion/Accordion';
 import {Rating, RatingValueType} from './components/Rating/Rating';
 // @ts-ignore
-import OnOff from './components/OnOff/OnOff';
+import {OnOff} from './components/OnOff/OnOff';
 import UncontrolledAccordion from './components/UncontrolledAccordion/UncontrolledAccordion';
 import { UncontrolledRating } from './components/UbcontrolledRating/UncontrolledRating';
 import UncontrolledOnOff from './components/UncontrolledOnOff/UncontrolledOnOff';

@@ -6,8 +6,9 @@ export type RatingPropsType = {
     defaultValue?: RatingValueType,
     // value: number //(0 | 1 | 2 | 3 | 4 | 5)
 }
-
-export function UncontrolledRating(props: RatingPropsType) {
+const Star = React.memo(StarMemo)
+export const UncontrolledRating = React.memo(UncontrolledRatingMemo)
+export function UncontrolledRatingMemo(props: RatingPropsType) {
 
     const stars = [1, 2, 3, 4, 5];
 
@@ -29,7 +30,7 @@ type StarPropsType = {
     index: number,
 }
 
-function Star(props: StarPropsType) {
+function StarMemo(props: StarPropsType) {
 
     const onClickHandler = () => {
         props.setValue(props.index)

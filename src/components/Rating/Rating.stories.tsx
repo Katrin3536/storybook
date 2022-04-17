@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Rating, RatingPropsType, RatingValueType} from './Rating';
+import {RatingMemo, RatingPropsType, RatingValueType} from './Rating';
 import {Story} from '@storybook/react';
 import {action} from '@storybook/addon-actions';
 
@@ -11,7 +11,7 @@ const CategoryObj = (categoryName: 'Events' | 'Values') => ({
 
 export default {
     title: 'components/Rating',
-    component: Rating,
+    component: RatingMemo,
     argTypes: {
         setRatingValue: {
                 ...CategoryObj('Events'),
@@ -25,7 +25,7 @@ const callback = action('rating change number of stars');
 
 const Template
     :
-    Story<RatingPropsType> = (args) => <Rating {...args}/>;
+    Story<RatingPropsType> = (args) => <RatingMemo {...args}/>;
 
 export const EmptyRating = Template.bind({});
 EmptyRating.args = {
@@ -65,7 +65,7 @@ Rating5.args = {
 
 export const ChangingRating: Story<RatingPropsType> = (args) => {
     const [rating, setRating] = useState<RatingValueType>(5);
-    return <Rating {...args} value={rating} setRatingValue={setRating}/>;
+    return <RatingMemo {...args} value={rating} setRatingValue={setRating}/>;
 };
 
 

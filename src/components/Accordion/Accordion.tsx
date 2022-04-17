@@ -26,8 +26,10 @@ export type AccordionPropsType = {
      */
     onClickBody: (value: number) => void
 }
-
-function Accordion(props: AccordionPropsType) {
+ const Accordion = React.memo(AccordionMemo)
+function AccordionMemo(props: AccordionPropsType) {
+    const AccordionTitle = React.memo(AccordionTitleMemo);
+    const AccordionBody = React.memo(AccordionBodyMemo)
     return <div>
         <AccordionTitle title={props.titleValue} onClick={props.onClick} color={props.color}/>
         {/*<AccordionTitle title={props.titleValue} onClick={props.onClick} value={!props.collapsed}/> второй способ с передачей значения*/}
@@ -44,7 +46,7 @@ type AccordionTitlePropsType = {
     // value:boolean второй способ со значением
 }
 
-function AccordionTitle(props: AccordionTitlePropsType) {
+function AccordionTitleMemo(props: AccordionTitlePropsType) {
     return <h3 style={{color: props.color ? props.color : 'black'}}
                onClick={(e) => props.onClick()}
     >
@@ -58,7 +60,7 @@ export type AccordionBodyPropsType = {
     onClickBody: (value: number) => void
 }
 
-function AccordionBody(props: AccordionBodyPropsType) {
+function AccordionBodyMemo(props: AccordionBodyPropsType) {
     return (
         <ul>
             {props.items.map((i, index) => <li key={index} onClick={() => {props.onClickBody(i.value);

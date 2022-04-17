@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import OnOff from './OnOff';
+import OnOffMemo  from './OnOff';
 import {action} from '@storybook/addon-actions';
 import {Story} from '@storybook/react';
+import {OnOff} from './OnOff';
 
 const CategoryObj = (categoryName: 'Events' | 'Values') => ({
     table: {
@@ -11,7 +12,7 @@ const CategoryObj = (categoryName: 'Events' | 'Values') => ({
 
 export default {
     title: 'components/OnOff',
-    component: OnOff,
+    component: OnOffMemo,
     argTypes: {
         onClick: {
             ...CategoryObj("Events")
@@ -24,7 +25,7 @@ export default {
 
 const callback = action('on or off clicked');
 
-const Template: Story<OnOff> = (args) => <OnOff {...args}/>;
+const Template: Story<OnOff> = (args) => <OnOffMemo {...args}/>;
 
 export const OnMode = Template.bind({});
 OnMode.args = {
@@ -40,7 +41,7 @@ OffMode.args = {
 
 export const ModeChanging: Story<OnOff> = (args) => {
     const [value, setValue] = useState<boolean>(true);
-    return <OnOff {...args} turnOn={value} onClick={()=>setValue(!value)}/>;
+    return <OnOffMemo {...args} turnOn={value} onClick={()=>setValue(!value)}/>;
 };
 
 
