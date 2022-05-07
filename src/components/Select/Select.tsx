@@ -57,11 +57,13 @@ export const Select = (props: SelectPropsType) => {
             <div className={s.select} onKeyUp={onKeyUp} tabIndex={0}>
                 <span className={s.main} onClick={toggleItems}>{selectItem && selectItem.title}</span>
                 {active &&
-                    <div className={s.items}>{props.items.map(i => <div
+                    <div
+                        className={s.items}>{props.items.map(i => <div
                         onMouseEnter={() => sethoveredElementValue(i.value)}
                         className={s.item + ' ' + (hoveredElement === i ? s.selected : '')}
                         onClick={() => onItemClick(i.value)}
-                        key={i.value}>{i.title}</div>)}</div>
+                        key={i.value}>{i.title}</div>)}
+                    </div>
                 }
             </div>
         </>
