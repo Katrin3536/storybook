@@ -1,7 +1,7 @@
 import React, {useEffect,useState} from 'react';
 
 export default {
-    title: 'components/clock demo',
+    title: 'components/Clock demo',
 };
 
 export const Clock = () => {
@@ -15,7 +15,6 @@ export const Clock = () => {
             setDate(new Date())
         }, 1000)
     }, [])
-
     return (
         <>
             Time:{stringTime}
