@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 export default {
     title: 'components/useEffect demo',
@@ -8,24 +8,25 @@ export const SimpleExample = () => {
     const [counter, setCounter] = useState(1);
     const [fake, setFake] = useState(1);
 
-    useEffect(()=> {
-        console.log("useEffect every render");
+    useEffect(() => {
+        console.log('useEffect every render');
         document.title = counter.toString();
         // api.getUsers().then('')
         // setInterval;
         // indexedDB;
         // document.getElementById();
         // document.title = 'users'
-    })
+    });
 
-    useEffect(()=> {
-        console.log("useEffect only first render(componentDidMount)");
-        document.title = counter.toString()}, [])
-
-    useEffect(()=> {
-        console.log("useEffect first render and every counter change");
+    useEffect(() => {
+        console.log('useEffect only first render(componentDidMount)');
         document.title = counter.toString();
-    }, [counter])
+    }, []);
+
+    useEffect(() => {
+        console.log('useEffect first render and every counter change');
+        document.title = counter.toString();
+    }, [counter]);
 
     return (
         <>
@@ -36,7 +37,7 @@ export const SimpleExample = () => {
     );
 };
 
-export const SetTimeoutExample = () => {
+export const SetIntervalExample = () => {
     const [counter, setCounter] = useState(1);
     const [fake, setFake] = useState(1);
 
@@ -46,11 +47,15 @@ export const SetTimeoutExample = () => {
     //     }, 1000)
     // }, [counter])
 
-    useEffect(()=> {
-        setInterval (()=> {
-            setCounter(state=> state +1)
-        }, 1000)
-    }, [])
+    useEffect(() => {
+        const setIntervalID=setInterval(() => {
+            setCounter(state => state + 1);
+        }, 1000);
+        return ()=>{
+            clearInterval(setIntervalID)
+        }
+
+    }, []);
 
     return (
         <>
@@ -61,3 +66,71 @@ export const SetTimeoutExample = () => {
     );
 };
 
+export const ResetEffectExample = () => {
+    const [counter, setCounter] = useState(1);
+
+    console.log('component rendered' + counter);
+
+    useEffect(() => {
+        console.log('Effect finished' + counter);
+
+        return () => {
+            console.log('RESET' + counter);
+        };
+    }, [counter]);
+
+    const increase = () => {
+        setCounter(counter + 1);
+    };
+
+    return (
+        <>
+            Hello, counter:{counter}
+            <button onClick={increase}>+</button>
+        </>
+    );
+};
+
+export const KeyTrackerExample = () => {
+    const [text, setText] = useState('');
+
+    console.log('component rendered' + text);
+
+    useEffect(() => {
+        const handler = (e:KeyboardEvent)=> {
+                console.log(e.key);
+                setText(state=> state + e.key)
+            }
+        window.addEventListener('keypress', handler )
+
+        return () => {
+            window.removeEventListener('keypress', handler)
+    }}, [])
+
+    return (
+        <>
+            Typed text: {text}
+        </>
+    );
+};
+
+export const SetTimeoutExample = () => {
+    const [text, setText] = useState('');
+
+    console.log('component rendered' + text);
+
+    useEffect(() => {
+        const setTimeOutID = setTimeout(()=>{
+            setText('3 sec passed')
+        }, 3000)
+        return () => {
+            clearTimeout(setTimeOutID)
+        }
+        }, [text])
+
+    return (
+        <>
+            Typed text: {text}
+        </>
+    );
+};
