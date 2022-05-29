@@ -9,11 +9,13 @@ export default {
         }
 
 
-export const BaseExample: Story<ClockType> = (args) => {
-    const [date, setDate] = useState(new Date());
-    return <Clock {...args}/>;
+export const BaseAnalogExample: Story<ClockType> = (args) => {
+    return <Clock mode={'Analog'}/>;
 };
 
+export const BaseDigitalExample: Story<ClockType> = (args) => {
+    return <Clock mode={'Digital'}/>
+}
 
 
 
